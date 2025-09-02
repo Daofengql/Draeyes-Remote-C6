@@ -1,0 +1,50 @@
+# Arduino Core and VS Code specific build outputs
+# 编译生成的核心和缓存文件
+build/
+.build/
+*.o
+*.a
+*.d
+*.bin
+*.hex
+*.elf
+*.eep
+*.lss
+*.sym
+*.map
+
+# VS Code workspace specific files
+# VS Code 工作区配置文件 (通常包含本地路径和个人设置)
+.vscode/
+# 注意: 如果你的团队需要共享调试配置(launch.json)或任务配置(tasks.json)
+# 你可以取消下面两行的注释，并保留 .vscode 目录下的这两个文件
+#!.vscode/tasks.json
+#!.vscode/launch.json
+# arduino.json 通常定义了板子类型和端口，建议保留在版本控制中，以便团队协作
+#!.vscode/arduino.json
+
+
+# Operating System generated files
+# 操作系统生成的文件
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Log and temporary files
+# 日志和临时文件
+*.log
+*.tmp
+*.temp
