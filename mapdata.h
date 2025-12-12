@@ -2,7 +2,7 @@
 #define MAPDATA_H
 
 #include <EEPROM.h>
-#define EEPROM_SIZE 9
+#define EEPROM_SIZE 32
 
 // TRIGGER BUTTONS
 #define LB 20
@@ -15,11 +15,14 @@
 
 // RIGHT-JOYSTICK
 #define RH 3
-#define RV 6
-#define RS 7
+#define RV 2
+#define RS 15
 
 #define R1 23
 #define R2 22
+
+#define I2C_SDA 0
+#define I2C_SCL 6
 
 // BATTERY VOLTAGE
 //#define ADC 39  //电池ADC

@@ -19,6 +19,40 @@ unsigned short mqttPort = 1883;
 uint8_t peerMacAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 int espnow_channel = 1;
 
+// --- 光照映射函数 (对数曲线版) ---
+// lux: 当前传感器读数
+// max_in: 你的满量程数值 (这里填 6500)
+// offset: 偏移量微调 (-0.5 ~ 0.5)，用于整体平移曲线
+// inverse: true = 强光变小(瞳孔模式), false = 强光变大
+float map_lux_fast_saturation(float lux, float knee_factor, float offset) {
+    // 1. 基础约束
+    if (lux < 0) lux = 0;
+    
+    // 2. Reinhard 色调映射算法
+    // 这种算法专门用于将巨大的光照范围压缩到 0~1，且保留低光细节
+    // 公式: val = lux / (lux + k)
+    // 当 lux = k 时，结果为 0.5
+    // 当 lux 远大于 k 时，结果趋近于 1.0
+    float normalized = lux / (lux + knee_factor);
+
+    // 3. 目标区间定义 [0.02, 1.0]
+    float out_min = 0.02; 
+    float out_max = 1.0;
+    
+    // 4. 映射到目标区间
+    // 正向逻辑：光越强，数值越大
+    float result = out_min + (normalized * (out_max - out_min));
+
+    // 5. 应用偏移量
+    result += offset;
+
+    // 6. 最终约束 (Clamping)
+    if (result < out_min) result = out_min;
+    if (result > out_max) result = out_max;
+
+    return result;
+}
+
 void generateRandomString(char *buffer, int length) {
   const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   for (int i = 0; i < length; i++) {
