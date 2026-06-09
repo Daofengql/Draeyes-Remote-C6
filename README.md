@@ -37,7 +37,7 @@ Draeyes Minicontroller 是 Draeyes 兽装可动眼系列的完整版手持遥控
 
 ```text
 .
-├── Draeyes-Minicontroller.ino      # Arduino 主程序入口
+├── Draeyes-Remote-C6.ino           # Arduino 主程序入口
 ├── RealisticEyeAnimation.h         # 自动眼动与自动眨眼算法
 ├── mapdata.h                       # 引脚、摇杆映射、EEPROM 校准逻辑
 ├── utils.h                         # ESP-NOW、AP/MQTT、光照映射等工具
@@ -66,7 +66,7 @@ Draeyes Minicontroller 是 Draeyes 兽装可动眼系列的完整版手持遥控
 
 ## 编译与烧录
 
-1. 用 Arduino IDE 打开 `Draeyes-Minicontroller.ino`。
+1. 用 Arduino IDE 打开 `Draeyes-Remote-C6.ino`。
 2. 选择 ESP32-C6 对应开发板。
 3. 安装上面列出的依赖库。
 4. 使用 USB 连接遥控器。
