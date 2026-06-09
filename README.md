@@ -1,8 +1,10 @@
-# Draeyes Minicontroller 完整版遥控器
+# Draeyes Remote C6 完整版遥控器
 
-Draeyes Minicontroller 是 Draeyes 兽装可动眼系列的完整版手持遥控器固件与硬件资料仓库。该版本面向 ESP32-C6 主控硬件，使用摇杆、肩键、同步拨动开关和可选 VEML7700 环境光传感器，通过 ESP-NOW 向接收端发送低延迟控制数据。
+Draeyes Remote C6 是 Draeyes 兽装可动眼系列的完整版手持遥控器固件与硬件资料仓库。该版本面向 ESP32-C6 主控硬件，使用摇杆、肩键、同步拨动开关和可选 VEML7700 环境光传感器，通过纯 ESP-NOW 向接收端发送低延迟控制数据。
 
 完整版遥控器适合正式使用场景：支持手动视线控制、全自动仿生眼动、自动眨眼、左右眼皮手动控制、摇杆锁定、摇杆零点校准、接收端配对，以及基于环境光的亮度或瞳孔响应控制。
+
+早期设计中预留过 WiFi AP 和 MQTT 辅助功能，当前公开版本已经移除这些未使用模块，以减少固件体积、依赖库和运行时内存占用。
 
 ## 硬件配置
 
@@ -40,7 +42,7 @@ Draeyes Minicontroller 是 Draeyes 兽装可动眼系列的完整版手持遥控
 ├── Draeyes-Remote-C6.ino           # Arduino 主程序入口
 ├── RealisticEyeAnimation.h         # 自动眼动与自动眨眼算法
 ├── mapdata.h                       # 引脚、摇杆映射、EEPROM 校准逻辑
-├── utils.h                         # ESP-NOW、AP/MQTT、光照映射等工具
+├── utils.h                         # ESP-NOW 初始化、光照映射等工具
 ├── hardware/
 │   ├── pcb/                        # PCB 工程或导出文件
 │   └── enclosure/                  # 外壳 STL 模型
@@ -59,8 +61,6 @@ Draeyes Minicontroller 是 Draeyes 兽装可动眼系列的完整版手持遥控
 | --- | --- |
 | ArduinoJson | 生成 ESP-NOW JSON 数据包 |
 | Adafruit VEML7700 | 读取环境光传感器 |
-| PubSubClient | 本地 MQTT 客户端辅助 |
-| sMQTTBroker | 本地 MQTT Broker 辅助 |
 
 同时需要安装支持 ESP32-C6 的 ESP32 Arduino Core。
 

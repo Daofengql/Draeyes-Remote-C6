@@ -1,6 +1,6 @@
 # 硬件资料
 
-这里存放 Draeyes Minicontroller 完整版遥控器的硬件参考资料。
+这里存放 Draeyes Remote C6 完整版遥控器的硬件参考资料。
 
 ## 内容
 
